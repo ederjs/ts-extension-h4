@@ -1,0 +1,205 @@
+[
+    {
+        "id": "7c407c5ee338bba6",
+        "type": "tab",
+        "label": "Unico",
+        "disabled": false,
+        "info": "",
+        "env": [],
+        "dbPanelCode": "",
+        "extensionId": "462f7970-8ae1-4567-9c04-88f4ac3b7d66"
+    },
+    {
+        "id": "f6597e9a443633d1",
+        "type": "tab",
+        "label": "Multiplo",
+        "disabled": false,
+        "info": "",
+        "env": [],
+        "dbPanelCode": "",
+        "extensionId": "462f7970-8ae1-4567-9c04-88f4ac3b7d66"
+    },
+    {
+        "id": "b3eb50f36ba0fe8c",
+        "type": "DBPanel Interceptor",
+        "z": "7c407c5ee338bba6",
+        "tableName": "TIPO_ACOMOD_DIFERENCA",
+        "name": "TIPO_ACOMOD_DIFERENCA",
+        "url": "/interceptor/crud/26578",
+        "view": "26578",
+        "executionOrder": 0,
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "085955abbf270a95"
+            ]
+        ]
+    },
+    {
+        "id": "085955abbf270a95",
+        "type": "function",
+        "z": "7c407c5ee338bba6",
+        "name": "Abort",
+        "func": "msg.payload.abort = \"Name is required\"+msg.payload.eventMoment;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "91dbc11ae8279d93"
+            ]
+        ]
+    },
+    {
+        "id": "91dbc11ae8279d93",
+        "type": "debug",
+        "z": "7c407c5ee338bba6",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "109eb7659b26ca69",
+        "type": "DBPanel Interceptor",
+        "z": "f6597e9a443633d1",
+        "tableName": "TIPO_ACOMODACAO",
+        "name": "TIPO_ACOMODACAO",
+        "url": "/interceptor/crud/30035",
+        "view": "30035",
+        "executionOrder": "1",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 340,
+        "y": 100,
+        "wires": [
+            [
+                "3d5237571fd25416"
+            ]
+        ]
+    },
+    {
+        "id": "dae4388819775081",
+        "type": "DBPanel Interceptor",
+        "z": "f6597e9a443633d1",
+        "tableName": "TIPO_ACOMODACAO",
+        "name": "TIPO_ACOMODACAO",
+        "url": "/interceptor/crud/30035",
+        "view": "30035",
+        "executionOrder": "2",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 340,
+        "y": 300,
+        "wires": [
+            [
+                "6c2d961bfaf99736"
+            ]
+        ]
+    },
+    {
+        "id": "3d5237571fd25416",
+        "type": "sql builder",
+        "z": "f6597e9a443633d1",
+        "parameters": [],
+        "name": "Insert",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "template": "Insert into LOG_TASY (DT_ATUALIZACAO,NM_USUARIO,CD_LOG,DS_LOG,NR_SEQUENCIA,DS_UTC_ATUALIZACAO,DS_UTC,IE_HORARIO_VERAO) \nvalues (sysdate,'tasy','666','TESTE INTERCEPTOR',LOG_TASY_seq.nextval, sysdate ,null,'N')",
+        "output": "str",
+        "x": 570,
+        "y": 100,
+        "wires": [
+            [
+                "9394e547fdfeee3c"
+            ]
+        ]
+    },
+    {
+        "id": "9394e547fdfeee3c",
+        "type": "tasy data access",
+        "z": "f6597e9a443633d1",
+        "name": "",
+        "x": 790,
+        "y": 100,
+        "wires": [
+            [
+                "ee5e5fe93dc64d82"
+            ]
+        ]
+    },
+    {
+        "id": "ee5e5fe93dc64d82",
+        "type": "debug",
+        "z": "f6597e9a443633d1",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "6c2d961bfaf99736",
+        "type": "function",
+        "z": "f6597e9a443633d1",
+        "name": "Abort",
+        "func": "msg.payload.abortMessage = \"Atenção: Abort realizado via SmartLink interceptor.\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 300,
+        "wires": [
+            [
+                "251b210cf4369ae5"
+            ]
+        ]
+    },
+    {
+        "id": "251b210cf4369ae5",
+        "type": "debug",
+        "z": "f6597e9a443633d1",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 300,
+        "wires": []
+    }
+]
