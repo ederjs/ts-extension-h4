@@ -1,0 +1,77 @@
+[
+  {
+    "id": "3cf6adc06dc4ddc4",
+    "type": "tab",
+    "label": "Primeiro flow",
+    "disabled": false,
+    "info": "",
+    "env": [],
+    "dbPanelCode": "",
+    "extensionId": "add1245f-d67a-4553-96fd-e73763a8b749"
+  },
+  {
+    "id": "30c65d689079bedd",
+    "type": "inject",
+    "z": "3cf6adc06dc4ddc4",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 160,
+    "wires": [
+      [
+        "da81e7f8cfc616fd"
+      ]
+    ]
+  },
+  {
+    "id": "da81e7f8cfc616fd",
+    "type": "function",
+    "z": "3cf6adc06dc4ddc4",
+    "name": "function 1",
+    "func": "\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 180,
+    "wires": [
+      [
+        "e82a7c19feaa19b2"
+      ]
+    ]
+  },
+  {
+    "id": "e82a7c19feaa19b2",
+    "type": "debug",
+    "z": "3cf6adc06dc4ddc4",
+    "name": "debug 1",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 530,
+    "y": 240,
+    "wires": []
+  }
+]
